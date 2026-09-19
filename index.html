@@ -2,263 +2,82 @@
 <html lang="gu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>નગરપાલિકા એડમિન અને અરજદાર પોર્ટલ</title>
+    <title>નગરપાલિકા ડિજિટલ પોર્ટલ</title>
     <style>
-        :root {
-            --primary-color: #002d62;
-            --orange-color: #f58220;
-            --green-color: #28a745;
-            --light-bg: #f4f6f9;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-bg);
-            color: #333;
-        }
-
-        header {
-            background: linear-gradient(135deg, #f58220 0%, #ffffff 50%, #28a745 100%);
-            border-bottom: 3px solid var(--primary-color);
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 { margin: 5px 0; color: var(--primary-color); font-size: 24px; }
-
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 8px;
-            margin-top: 0;
-        }
-
-        .login-form input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .btn {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 15px;
-        }
-
-        .btn:hover { opacity: 0.9; }
-        .btn-orange { background-color: var(--orange-color); }
-        .btn-danger { background-color: #dc3545; }
-
-        .upload-group {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            background: #f8fafc;
-        }
-
-        .upload-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #475569;
-        }
-
-        .download-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .download-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #fff;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-left: 5px solid var(--green-color);
-            border-top: 1px solid #eee;
-            border-right: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            border-radius: 4px;
-        }
-
-        .file-info h4 { margin: 0 0 5px 0; color: #1e293b; }
-        .file-info p { margin: 0; font-size: 13px; color: #64748b; }
-
-        .btn-download {
-            background-color: var(--green-color);
-            color: white;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .status-msg {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-            font-weight: bold;
-            display: none;
-        }
-
-        .success { background-color: #def7ec; color: #03543f; }
-        .error { background-color: #fde8e8; color: #9b1c1c; }
+        body { font-family: Arial, sans-serif; background: #f4f6f9; padding: 20px; text-align: center; }
+        .box { background: white; max-width: 400px; margin: 50px auto; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 5px solid #002d62; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #002d62; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 95%; }
+        .dashboard { display: none; background: white; max-width: 600px; margin: 30px auto; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: left; }
+        .success { color: green; font-weight: bold; margin-top: 10px; }
+        .error { color: red; font-weight: bold; display: none; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>નગરપાલિકા ડિજિટલ ફાઇલ મેનેજમેન્ટ સર્વર</h1>
-        <p>સરકારી લોગિન સિસ્ટમ અને સિટિઝન ડાઉનલોડ કેન્દ્ર</p>
-    </header>
+    <h2>નગરપાલિકા મિલકત રેકોર્ડ સિસ્ટમ</h2>
 
-    <div class="container">
+    <!-- લોગિન સેક્શન -->
+    <div class="box" id="loginSection">
+        <h3>🔐 અધિકારી લોગિન</h3>
+        <input type="text" id="user" placeholder="યુઝરનેમ (admin)">
+        <input type="password" id="pass" placeholder="પાસવર્ડ (nagarpalika123)">
+        <button onclick="doLogin()">લોગિન કરો</button>
+        <p id="err" class="error">ખોટું યુઝરનેમ કે પાસવર્ડ!</p>
+    </div>
 
-        <!-- વિભાગ ૧: એડમિન લોગિન સેક્શન -->
-        <div class="card" id="loginCard">
-            <h2>🔐 અધિકારી / સ્ટાફ લોગિન (Internal Admin Login)</h2>
-            <p style="color: #666; font-size: 14px;">સર્વર પર નવા ફોર્મ અપલોડ કરવા માટે અહિયાં લોગિન કરો.</p>
-            <div class="login-form">
-                <input type="text" id="username" placeholder="યુઝરનેમ (Username) દાખલ કરો">
-                <input type="password" id="password" placeholder="પાસવર્ડ (Password) દાખલ કરો">
-                <button class="btn" onclick="checkLogin()">સર્વર લોગિન કરો</button>
-                <div id="loginError" class="status-msg error">ખોટું યુઝરનેમ અથવા પાસવર્ડ!</div>
-            </div>
+    <!-- ડેશબોર્ડ સેક્શન -->
+    <div class="dashboard" id="dashSection">
+        <div style="display: flex; justify-content: space-between;">
+            <h3>🛠️ ફાઇલ અપલોડ સેક્શન</h3>
+            <button onclick="doLogout()" style="width: auto; background: red;">લોગઆઉટ</button>
         </div>
-
-        <!-- વિભાગ ૨: એડમિન ડેશબોર્ડ -->
-        <div class="card" id="adminDashboard" style="display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 8px; margin-bottom: 15px;">
-                <h2 style="border: none; margin: 0;">🛠️ એડમિન કંટ્રોલ પેનલ (સર્વર અપલોડ)</h2>
-                <button class="btn btn-danger" onclick="logout()">લોગઆઉટ</button>
-            </div>
-            
-            <div id="uploadSuccess" class="status-msg success">🎉 ફાઇલ સર્વર પર સફળતાપૂર્વક અપલોડ થઈ ગઈ છે અને અરજદાર માટે લાઈવ છે!</div>
-
-            <div class="upload-group">
-                <label>૧. નવી આકારણી માટેનું નવું અપડેટેડ ફોર્મ-૧ અપલોડ કરો:</label>
-                <input type="file" id="fileForm1">
-                <button class="btn btn-orange" style="margin-top: 10px;" onclick="uploadFile('form1')">સર્વર પર અપડેટ કરો</button>
-            </div>
-
-            <div class="upload-group">
-                <label>૨. મિલકત નામફેર / હક્ક દાખલ માટેનું ફોર્મ-૨ અપલોડ કરો:</label>
-                <input type="file" id="fileForm2">
-                <button class="btn btn-orange" style="margin-top: 10px;" onclick="uploadFile('form2')">સર્વર પર અપડેટ કરો</button>
-            </div>
-        </div>
-
-        <!-- વિભાગ ૩: અરજદાર માટે ડાઉનલોડ સેક્શન -->
-        <div class="card">
-            <h2>📥 સિટિઝન ડાઉનલોડ કેન્દ્ર (અરજદારો માટે તમામ ફાઇલો)</h2>
-            <p style="color: #666; font-size: 14px;">અરજદારશ્રી સીધી રીતે નીચે આપેલા લિસ્ટમાંથી ફોર્મ અને માર્ગદર્શિકા ડાઉનલોડ કરી શકશે.</p>
-            
-            <ul class="download-list">
-                <li class="download-item">
-                    <div class="file-info">
-                        <h4 id="labelForm1">નવી આકારણી અરજી ફોર્મ (ફોર્મ-૧)</h4>
-                        <p id="timeForm1">છેલ્લું અપડેટ: નિયત સરકારી નમૂનો</p>
-                    </div>
-                    <a href="#" id="linkForm1" class="btn-download" download>ડાઉનલોડ કરો 📄</a>
-                </li>
-                <li class="download-item">
-                    <div class="file-info">
-                        <h4 id="labelForm2">મિલકત નામફેર / હક્ક દાખલ ફોર્મ (ફોર્મ-૨)</h4>
-                        <p id="timeForm2">છેલ્લું અપડેટ: નિયત સરકારી નમૂનો</p>
-                    </div>
-                    <a href="#" id="linkForm2" class="btn-download" download>ડાઉનલોડ કરો 📄</a>
-                </li>
-            </ul>
-        </div>
-
+        <hr>
+        <p><strong>૧. નવી આકારણી ફોર્મ-૧ અપલોડ:</strong></p>
+        <input type="file" id="f1" onchange="updateLink('f1', 'down1')">
+        <br><br>
+        <p><strong>૨. નામફેર ફોર્મ-૨ અપલોડ:</strong></p>
+        <input type="file" id="f2" onchange="updateLink('f2', 'down2')">
+        
+        <br><br>
+        <h3>📥 અરજદાર ડાઉનલોડ વિભાગ</h3>
+        <p>અરજદારો માટે આ લિંક્સ નીચે મુજબ લાઇવ દેખાશે:</p>
+        <ul>
+            <li>નવી આકારણી ફોર્મ-૧: <a href="#" id="down1" download>ડાઉનલોડ લિંક 📄</a></li>
+            <li>નામફેર ફોર્મ-૨: <a href="#" id="down2" download>ડાઉનલોડ લિંક 📄</a></li>
+        </ul>
+        <p id="msg" class="success"></p>
     </div>
 
     <script>
-        const ADMIN_USER = "admin";
-        const ADMIN_PASS = "nagarpalika123";
-
-        function checkLogin() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            const errorMsg = document.getElementById('loginError');
-
-            if (user === ADMIN_USER && pass === ADMIN_PASS) {
-                document.getElementById('loginCard').style.display = 'none';
-                document.getElementById('adminDashboard').style.display = 'block';
-                errorMsg.style.display = 'none';
+        function doLogin() {
+            var u = document.getElementById('user').value.trim();
+            var p = document.getElementById('pass').value.trim();
+            if(u === "admin" && p === "nagarpalika123") {
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('dashSection').style.display = 'block';
+                document.getElementById('err').style.display = 'none';
             } else {
-                errorMsg.style.display = 'block';
+                document.getElementById('err').style.display = 'block';
             }
         }
 
-        function logout() {
-            document.getElementById('loginCard').style.display = 'block';
-            document.getElementById('adminDashboard').style.display = 'none';
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
+        function doLogout() {
+            document.getElementById('loginSection').style.display = 'block';
+            document.getElementById('dashSection').style.display = 'none';
+            document.getElementById('user').value = '';
+            document.getElementById('pass').value = '';
         }
 
-        function uploadFile(formType) {
-            let fileInput;
-            let targetLink;
-            let targetTime;
-
-            if (formType === 'form1') {
-                fileInput = document.getElementById('fileForm1');
-                targetLink = document.getElementById('linkForm1');
-                targetTime = document.getElementById('timeForm1');
-            } else {
-                fileInput = document.getElementById('fileForm2');
-                targetLink = document.getElementById('linkForm2');
-                targetTime = document.getElementById('timeForm2');
+        function updateLink(inputId, linkId) {
+            var fileInput = document.getElementById(inputId);
+            var downloadLink = document.getElementById(linkId);
+            if(fileInput.files.length > 0) {
+                var file = fileInput.files[0];
+                downloadLink.href = URL.createObjectURL(file);
+                downloadLink.innerText = "ડાઉનલોડ કરો: " + file.name;
+                document.getElementById('msg').innerText = "🎉 ફાઇલ સફળતાપૂર્વક અપડેટ થઈ ગઈ છે!";
             }
-
-            if (fileInput.files.length === 0) {
-                alert("મહેરબાની કરીને પહેલા ફાઇલ સિલેક્ટ કરો!");
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const fileURL = URL.createObjectURL(file);
-            
-            targetLink.href = fileURL;
-            targetLink.setAttribute('download', file.name);
-            
-            const currentDateTime = new Date().toLocaleString('gu-IN');
-            targetTime.innerText = "અપલોડ તારીખ: " + currentDateTime + " | ફાઇલનું નામ: " + file.name;
-            
-            const successAlert = document.getElementById('uploadSuccess');
-            successAlert.style.display = 'block';
-            setTimeout(() => { successAlert.style.display = 'none'; }, 4000);
         }
     </script>
 </body>
