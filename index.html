@@ -3,326 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>નગરપાલિકા મિલકત સેવાઓ | QR કોડ ઓનલાઈન ફોર્મ</title>
+    <title>નગરપાલિકા એડમિન અને અરજદાર પોર્ટલ</title>
     <style>
         :root {
-            --primary-color: #0056b3;
-            --secondary-color: #f58220;
-            --success-color: #28a745;
-            --dark-color: #333;
-            --light-bg: #f8f9fa;
+            --primary-color: #002d62;
+            --orange-color: #f58220;
+            --green-color: #28a745;
+            --light-bg: #f4f6f9;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark-color);
-            background-color: var(--light-bg);
             margin: 0;
             padding: 0;
+            background-color: var(--light-bg);
+            color: #333;
         }
 
         header {
             background: linear-gradient(135deg, #f58220 0%, #ffffff 50%, #28a745 100%);
             border-bottom: 3px solid var(--primary-color);
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        header h1 {
-            margin: 5px 0;
-            color: #002d62;
-            font-size: 28px;
-        }
-
-        header p {
-            margin: 5px 0;
-            font-weight: bold;
-            color: #444;
-        }
+        header h1 { margin: 5px 0; color: var(--primary-color); font-size: 24px; }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 30px auto;
             padding: 0 20px;
         }
 
-        .section-card {
-            background: #fff;
+        .card {
+            background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             padding: 25px;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--primary-color);
-        }
-
-        .section-card.namefer {
-            border-left-color: var(--secondary-color);
-        }
-
-        .section-card.record {
-            border-left-color: var(--success-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
         }
 
         h2 {
-            color: #002d62;
+            color: var(--primary-color);
             border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             margin-top: 0;
         }
 
-        .alert-info {
-            background-color: #e3f2fd;
-            border-left: 4px solid #2196f3;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-        }
-
-        /* QR Code & Action Panel */
-        .action-panel {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 15px;
-            background: #fdfdfd;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 6px;
-            align-items: center;
-        }
-
-        .qr-box {
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-            background: #fff;
+        /* લોગિન ફોર્મ */
+        .login-form input {
+            width: 100%;
             padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
-        .qr-box img {
-            width: 150px;
-            height: 150px;
-            margin-top: 5px;
-        }
-
-        .qr-text {
-            font-size: 13px;
-            color: #64748b;
-            margin-top: 5px;
+        /* બટન્સ */
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
             font-weight: bold;
+            font-size: 15px;
         }
 
-        .info-box {
-            flex: 2;
-            min-width: 280px;
+        .btn:hover { opacity: 0.9; }
+        .btn-orange { background-color: var(--orange-color); }
+        .btn-danger { background-color: #dc3545; }
+
+        /* અપલોડ સેક્શન */
+        .upload-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: #f8fafc;
         }
 
-        .steps {
+        .upload-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #475569;
+        }
+
+        /* અરજદાર ડાઉનલોડ લિસ્ટ */
+        .download-list {
             list-style: none;
             padding: 0;
         }
 
-        .step-item {
-            position: relative;
-            padding-left: 45px;
-            margin-bottom: 20px;
-        }
-
-        .step-item::before {
-            content: attr(data-step);
-            position: absolute;
-            left: 0;
-            top: 2px;
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            font-weight: bold;
-        }
-
-        .namefer .step-item::before {
-            background-color: var(--secondary-color);
-        }
-
-        .step-title {
-            font-weight: bold;
-            font-size: 18px;
-            color: #111;
-            margin-bottom: 5px;
-        }
-
-        .checklist {
-            background-color: #fff9f3;
-            border: 1px dashed #f58220;
-            padding: 15px 20px;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-
-        .checklist-title {
-            font-weight: bold;
-            color: #c45a00;
-            margin-bottom: 8px;
-        }
-
-        .checklist ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .checklist li {
-            margin-bottom: 6px;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: #fff;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #002d62;
-            color: white;
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .badge {
-            padding: 5px 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--green-color);
+            border-top: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
             border-radius: 4px;
-            font-size: 14px;
-            font-weight: bold;
-            color: white;
         }
 
-        .badge-time {
-            background-color: #e67e22;
-        }
+        .file-info h4 { margin: 0 0 5px 0; color: #1e293b; }
+        .file-info p { margin: 0; font-size: 13px; color: #64748b; }
 
-        .btn-action {
-            display: inline-block;
-            background-color: var(--primary-color);
+        .btn-download {
+            background-color: var(--green-color);
             color: white;
-            padding: 10px 20px;
             text-decoration: none;
+            padding: 8px 15px;
             border-radius: 4px;
-            font-size: 15px;
-            margin-top: 10px;
             font-weight: bold;
-            transition: background 0.3s;
+            font-size: 14px;
         }
 
-        .btn-action:hover {
-            background-color: #004085;
+        .status-msg {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+            display: none;
         }
 
-        .namefer .btn-action {
-            background-color: var(--secondary-color);
-        }
-
-        .namefer .btn-action:hover {
-            background-color: #d66b15;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #002d62;
-            color: white;
-            margin-top: 40px;
-        }
+        .success { background-color: #def7ec; color: #03543f; }
+        .error { background-color: #fde8e8; color: #9b1c1c; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>નગરપાલિકા ડિજિટલ સેવા પોર્ટલ</h1>
-        <p>મિલકત રેકોર્ડ વિભાગ: નવી આકારણી અને નામફેર ઓનલાઈન માર્ગદર્શિકા</p>
+        <h1>નગરપાલિકા ડિજિટલ ફાઇલ મેનેજમેન્ટ સર્વર</h1>
+        <p>સરકારી લોગિન સિસ્ટમ અને સિટિઝન ડાઉનલોડ કેન્દ્ર</p>
     </header>
 
     <div class="container">
 
-        <!-- વિભાગ ૧: સામાન્ય સૂચનાઓ -->
-        <div class="section-card">
-            <h2>૧. સામાન્ય માર્ગદર્શિકા અને સૂચનાઓ</h2>
-            <div class="alert-info">
-                <strong>અગત્યની નોંધ:</strong> ફોર્મ ભરવા માટે તમે નીચે આપેલા બટન પર ક્લિક કરી શકો છો અથવા તમારા મોબાઈલ કેમેરાથી આપેલા QR કોડને સ્કેન કરીને સીધા જ ઓનલાઈન સબમિશન પેજ પર જઈ શકો છો.
+        <!-- વિભાગ ૧: એડમિન લોગિન સેક્શન -->
+        <div class="card" id="loginCard">
+            <h2>🔐 અધિકારી / સ્ટાફ લોગિન (Internal Admin Login)</h2>
+            <p style="color: #666; font-size: 14px;">સર્વર પર નવા ફોર્મ અપલોડ કરવા માટે અહિયાં લોગિન કરો.</p>
+            <div class="login-form">
+                <input type="text" id="username" placeholder="યુઝરનેમ (Username) દાખલ કરો">
+                <input type="password" id="password" placeholder="પાસવર્ડ (Password) દાખલ કરો">
+                <button class="btn" onclick="checkLogin()">સર્વર લોગિન કરો</button>
+                <div id="loginError" class="status-msg error">ખોટું યુઝરનેમ અથવા પાસવર્ડ!</div>
             </div>
-            <ul>
-                <li>તમામ દસ્તાવેજો ઓરિજિનલ નકલમાંથી સ્પષ્ટ સ્કેન કરીને અપલોડ કરવાના રહેશે.</li>
-                <li>અધૂરી વિગતો અથવા ખોટા કાગળો ધરાવતી અરજીઓ સીધી જ નામંજૂર થઈ શકે છે.</li>
-            </ul>
         </div>
 
-        <!-- વિભાગ ૨: નવી આકારણી પ્રોસેસ -->
-        <div class="section-card">
-            <h2>૨. નવી આકારણી (New Property Assessment) - પ્રોસેસ અને ઓનલાઈન ફોર્મ</h2>
+        <!-- વિભાગ ૨: એડમિન ડેશબોર્ડ (લોગિન થયા પછી જ દેખાશે) -->
+        <div class="card" id="adminDashboard" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 8px; margin-bottom: 15px;">
+                <h2 style="border: none; margin: 0;">🛠️ એડમિન કંટ્રોલ પેનલ (સર્વર અપલોડ)</h2>
+                <button class="btn btn-danger" onclick="logout()">લોગઆઉટ</button>
+            </div>
             
-            <div class="action-panel">
-                <div class="info-box">
-                    <h3>નવી આકારણી ઓનલાઈન સબમિશન</h3>
-                    <p>નવી બનેલી મિલકતની પ્રથમ વખત નગરપાલિકાના વેરા ચોપડે નોંધણી કરવા માટે નીચેના બટનનો ઉપયોગ કરો અથવા જમણી બાજુ આપેલો QR કોડ સ્કેન કરો.</p>
-                    <a href="https://example.com" target="_blank" class="btn-action">💻 ઓનલાઈન ફોર્મ ભરો (ફોર્મ-૧)</a>
-                </div>
-                <div class="qr-box">
-                    <strong>મોબાઈલથી સ્કેન કરો</strong>
-                    <!-- અહીં તમે તમારા Google Forms, Streamlit કે KoboToolbox ની લિંકનો QR કોડ ઈમેજ પાથ મૂકી શકો છો -->
-                    <br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com" alt="New Assessment QR Code">
-                    <div class="qr-text">Scan for New Assessment Form</div>
-                </div>
+            <div id="uploadSuccess" class="status-msg success">🎉 ફાઇલ સર્વર પર સફળતાપૂર્વક અપલોડ થઈ ગઈ છે અને અરજદાર માટે લાઈવ છે!</div>
+
+            <div class="upload-group">
+                <label>૧. નવી આકારણી માટેનું નવું અપડેટેડ ફોર્મ-૧ અપલોડ કરો:</label>
+                <input type="file" id="fileForm1">
+                <button class="btn btn-orange" style="margin-top: 10px;" onclick="uploadFile('form1')">સર્વર પર અપડેટ કરો</button>
             </div>
 
-            <br>
-            <ul class="steps">
-                <li class="step-item" data-step="૧">
-                    <div class="step-title">જરૂરી દસ્તાવેજો એકત્રિત કરો (ચેકલિસ્ટ)</div>
-                    <div class="checklist">
-                        <div class="checklist-title">📂 જરૂરી ચેકલિસ્ટ:</div>
-                        <ul>
-                            <li>રજિસ્ટર્ડ ખરીદ વેચાણ દસ્તાવેજ (ઇન્ડેક્સ-૨ ની નકલ સાથે).</li>
-                            <li>બિનખેતી (NA) હુકમ અને મંજૂર થયેલ લેઆઉટ પ્લાન/નકશો.</li>
-                            <li>નગરપાલિકા દ્વારા આપવામાં આવેલ બાંધકામ મંજૂરી (રાજાચીઠ્ઠી) અને બીયુ પરમિશન.</li>
-                            <li>સીટી સર્વે પ્રોપર્ટી કાર્ડ અથવા ૭/૧૨, ૮-અ ના તાજેતરના ઉતારા.</li>
-                        </ul>
+            <div class="upload-group">
+                <label>૨. મિલકત નામફેર / હક્ક દાખલ માટેનું ફોર્મ-૨ અપલોડ કરો:</label>
+                <input type="file" id="fileForm2">
+                <button class="btn btn-orange" style="margin-top: 10px;" onclick="uploadFile('form2')">સર્વર પર અપડેટ કરો</button>
+            </div>
+        </div>
+
+        <!-- વિભાગ ૩: અરજદાર માટે ડાઉનલોડ સેક્શન (હંમેશા પબ્લિક રહેશે) -->
+        <div class="card">
+            <h2>📥 સિટિઝન ડાઉનલોડ કેન્દ્ર (અરજદારો માટે તમામ ફાઇલો)</h2>
+            <p style="color: #666; font-size: 14px;">અરજદારશ્રી સીધી રીતે નીચે આપેલા લિસ્ટમાંથી ફોર્મ અને માર્ગદર્શિકા ડાઉનલોડ કરી શકશે.</p>
+            
+            <ul class="download-list">
+                <li class="download-item">
+                    <div class="file-info">
+                        <h4 id="labelForm1">નવી આકારણી અરજી ફોર્મ (ફોર્મ-૧)</h4>
+                        <p id="timeForm1">છેલ્લું અપડેટ: નિયત સરકારી નમૂનો</p>
                     </div>
+                    <a href="#" id="linkForm1" class="btn-download" download>ડાઉનલોડ કરો 📄</a>
                 </li>
-                <li class="step-item" data-step="૨">
-                    <div class="step-title">સ્થળ તપાસણી અને ફાઈનલ મંજૂરી</div>
-                    <div>ઓનલાઈન ફોર્મ સબમિટ થયા પછી નગરપાલિકાના સર્વેયર દ્વારા સાઈટ ઈન્સ્પેક્શન કરવામાં આવશે અને નવો ટેક્સ તેમજ મિલકત નંબર જનરેટ કરાશે.</div>
+                <li class="download-item">
+                    <div class="file-info">
+                        <h4 id="labelForm2">મિલકત નામફેર / હક્ક દાખલ ફોર્મ (ફોર્મ-૨)</h4>
+                        <p id="timeForm2">છેલ્લું અપડેટ: નિયત સરકારી નમૂનો</p>
+                    </div>
+                    <a href="#" id="linkForm2" class="btn-download" download>ડાઉનલોડ કરો 📄</a>
                 </li>
             </ul>
         </div>
 
-        <!-- વિભાગ ૩: નામફેર પ્રોસેસ -->
-        <div class="section-card namefer">
-            <h2>૩. નામફેર / હક્ક દાખલ (Property Transfer) - પ્રોસેસ અને ઓનલાઈન ફોર્મ</h2>
+    </div>
+
+    <script>
+        // ટેસ્ટિંગ માટે ડિફોલ્ટ એડમિન આઈડી-પાસવર્ડ સેટ કરેલ છે
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "nagarpalika123";
+
+        // લોગિન ચેક કરવાનું ફંક્શન
+        function checkLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const errorMsg = document.getElementById('loginError');
+
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                document.getElementById('loginCard').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                errorMsg.style.display = 'none';
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        }
+
+        // લોગઆઉટ ફંક્શન
+        function logout() {
+            document.getElementById('loginCard').style.display = 'block';
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // સર્વર પર ફાઇલ અપલોડ કરી અરજદાર સેક્શનમાં લિંક બદલવાનું ફંક્શન
+        function uploadFile(formType) {
+            let fileInput;
+            let targetLink;
+            let targetTime;
+            let targetLabel;
+
+            if (formType === 'form1') {
+                fileInput = document.getElementById('fileForm1');
+                targetLink = document.getElementById('linkForm1');
+                targetTime = document.getElementById('timeForm1');
+                targetLabel = document.getElementById('labelForm1');
+            } else {
+                fileInput = document.getElementById('fileForm2');
+                targetLink = document.getElementById('linkForm2');
+                targetTime = document.getElementById('timeForm2');
+                targetLabel = document.getElementById('labelForm2');
+            }
+
+            if (fileInput.files.length === 0) {
+                alert("મહેરબાની કરીને પહેલા ફાઇલ સિલેક્ટ કરો!");
+                return;
+            }
+
+            const file = fileInput.files[0];
             
-            <div class="action-panel">
-                <div class="info-box">
-                    <h3>મિલકત નામફેર ઓનલાઈન સબમિશન</h3>
-                    <p>મિલકત વેચાણ, બક્ષિસ કે વારસાઈના કિસ્સામાં નામ બદલવા માટે નીચેના બટન પર ક્લિક કરો અથવા મોબાઈલથી QR કોડ સ્કેન કરો.</p>
-                    <a href="https://example.com" target="_blank" class="btn-action">💻 ઓનલાઈન નામફેર ફોર્મ ભરો (ફોર્મ-૨)</a>
-                </div>
-                <div class="qr-box">
-                    <strong>મોબાઈલથી સ્કેન કરો</strong>
+            // બ્રાઉઝર લેવલ પર ફાઇલની લોકલ લિંક (Blob) જનરેટ કરવી જેથી અરજદાર ડાઉનલોડ કરી શકે
+            const fileURL = URL.createObjectURL(file);
+            
+            // અરજદારના ડાઉનલોડ સેક્શનમાં ડેટા અપડેટ કરવો
+            targetLink.href = fileURL;
+            targetLink.setAttribute('download', file.name);
+            
+            const currentDateTime = new Date().toLocaleString('gu-IN');
+            targetTime.innerText = "અપલોડ તારીખ: " + currentDateTime + " | ફાઇલનું નામ: " + file.name;
+            
