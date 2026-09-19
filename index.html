@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>નગરપાલિકા મિલકત સેવાઓ | નવી આકારણી અને નામફેર માર્ગદર્શિકા</title>
+    <title>નગરપાલિકા મિલકત સેવાઓ | QR કોડ ઓનલાઈન ફોર્મ</title>
     <style>
         :root {
             --primary-color: #0056b3;
@@ -22,7 +22,6 @@
             padding: 0;
         }
 
-        /* સરકારી હેડર શૈલી */
         header {
             background: linear-gradient(135deg, #f58220 0%, #ffffff 50%, #28a745 100%);
             border-bottom: 3px solid var(--primary-color);
@@ -49,7 +48,6 @@
             padding: 0 20px;
         }
 
-        /* મુખ્ય વિભાગો */
         .section-card {
             background: #fff;
             border-radius: 8px;
@@ -82,7 +80,47 @@
             border-radius: 4px;
         }
 
-        /* સ્ટેપ બાય સ્ટેપ ટાઈમલાઈન */
+        /* QR Code & Action Panel */
+        .action-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+            background: #fdfdfd;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            align-items: center;
+        }
+
+        .qr-box {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+        }
+
+        .qr-box img {
+            width: 150px;
+            height: 150px;
+            margin-top: 5px;
+        }
+
+        .qr-text {
+            font-size: 13px;
+            color: #64748b;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            flex: 2;
+            min-width: 280px;
+        }
+
         .steps {
             list-style: none;
             padding: 0;
@@ -120,7 +158,6 @@
             margin-bottom: 5px;
         }
 
-        /* ચેકલિસ્ટ બૉક્સ */
         .checklist {
             background-color: #fff9f3;
             border: 1px dashed #f58220;
@@ -144,7 +181,6 @@
             margin-bottom: 6px;
         }
 
-        /* સરકારી રેકોર્ડ ટેબલ */
         .table-responsive {
             overflow-x: auto;
         }
@@ -172,41 +208,43 @@
             background-color: #f9f9f9;
         }
 
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
         .badge {
             padding: 5px 10px;
             border-radius: 4px;
             font-size: 14px;
             font-weight: bold;
             color: white;
-            background-color: #6c757d;
         }
 
         .badge-time {
             background-color: #e67e22;
         }
 
-        /* બટન શૈલી */
-        .btn-download {
+        .btn-action {
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            padding: 8px 15px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 4px;
-            font-size: 14px;
+            font-size: 15px;
             margin-top: 10px;
+            font-weight: bold;
             transition: background 0.3s;
         }
 
-        .btn-download:hover {
+        .btn-action:hover {
             background-color: #004085;
         }
 
-        /* ફૂટર */
+        .namefer .btn-action {
+            background-color: var(--secondary-color);
+        }
+
+        .namefer .btn-action:hover {
+            background-color: #d66b15;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -229,66 +267,62 @@
         <div class="section-card">
             <h2>૧. સામાન્ય માર્ગદર્શિકા અને સૂચનાઓ</h2>
             <div class="alert-info">
-                <strong>અગત્યની નોંધ:</strong> નગરપાલિકા વિસ્તારમાં આવતી તમામ મિલકતોની કાયદેસર નોંધણી (આકારણી) અને માલિકી હક્ક બદલાય ત્યારે નામફેર (દસ્તાવેજ ટ્રાન્સફર) કરાવવું સરકારી નિયમોનુસાર ફરજિયાત છે.
+                <strong>અગત્યની નોંધ:</strong> ફોર્મ ભરવા માટે તમે નીચે આપેલા બટન પર ક્લિક કરી શકો છો અથવા તમારા મોબાઈલ કેમેરાથી આપેલા QR કોડને સ્કેન કરીને સીધા જ ઓનલાઈન સબમિશન પેજ પર જઈ શકો છો.
             </div>
             <ul>
                 <li>તમામ દસ્તાવેજો ઓરિજિનલ નકલમાંથી સ્પષ્ટ સ્કેન કરીને અપલોડ કરવાના રહેશે.</li>
                 <li>અધૂરી વિગતો અથવા ખોટા કાગળો ધરાવતી અરજીઓ સીધી જ નામંજૂર થઈ શકે છે.</li>
-                <li>ઓનલાઈન અરજી સબમિટ કર્યા બાદ મળેલ <strong>એપ્લિકેશન નંબર</strong> સાચવી રાખવો.</li>
             </ul>
         </div>
 
         <!-- વિભાગ ૨: નવી આકારણી પ્રોસેસ -->
         <div class="section-card">
-            <h2>૨. નવી આકારણી (New Property Assessment) - સ્ટેપ-બાય-સ્ટેપ પ્રોસેસ</h2>
-            <p>નવી બનેલી મિલકત (મકાન/દુકાન)ને પ્રથમ વખત નગરપાલિકાના વેરા ચોપડે નોંધવાની પ્રક્રિયા:</p>
+            <h2>૨. નવી આકારણી (New Property Assessment) - પ્રોસેસ અને ઓનલાઈન ફોર્મ</h2>
             
+            <div class="action-panel">
+                <div class="info-box">
+                    <h3>નવી આકારણી ઓનલાઈન સબમિશન</h3>
+                    <p>નવી બનેલી મિલકતની પ્રથમ વખત નગરપાલિકાના વેરા ચોપડે નોંધણી કરવા માટે નીચેના બટનનો ઉપયોગ કરો અથવા જમણી બાજુ આપેલો QR કોડ સ્કેન કરો.</p>
+                    <a href="https://example.com" target="_blank" class="btn-action">💻 ઓનલાઈન ફોર્મ ભરો (ફોર્મ-૧)</a>
+                </div>
+                <div class="qr-box">
+                    <strong>મોબાઈલથી સ્કેન કરો</strong>
+                    <!-- અહીં તમે તમારા Google Forms, Streamlit કે KoboToolbox ની લિંકનો QR કોડ ઈમેજ પાથ મૂકી શકો છો -->
+                    <br><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com" alt="New Assessment QR Code">
+                    <div class="qr-text">Scan for New Assessment Form</div>
+                </div>
+            </div>
+
+            <br>
             <ul class="steps">
                 <li class="step-item" data-step="૧">
-                    <div class="step-title">અરજી ફોર્મ ભરવું</div>
-                    <div>વેબસાઇટ પરથી 'નવી આકારણી માટેનું નિયત ફોર્મ-૧' ડાઉનલોડ કરી, મિલકત ધારકની તમામ વ્યક્તિગત અને બાંધકામની વિગતો સચોટ ભરો.</div>
-                    <a href="#" class="btn-download">📄 ફોર્મ-૧ ડાઉનલોડ કરો</a>
-                </li>
-                <li class="step-item" data-step="૨">
-                    <div class="step-title">દસ્તાવેજોની ફાઇલ તૈયાર કરવી</div>
+                    <div class="step-title">જરૂરી દસ્તાવેજો એકત્રિત કરો (ચેકલિસ્ટ)</div>
                     <div class="checklist">
-                        <div class="checklist-title">📂 જરૂરી ચેકલિસ્ટ (નવી આકારણી):</div>
+                        <div class="checklist-title">📂 જરૂરી ચેકલિસ્ટ:</div>
                         <ul>
                             <li>રજિસ્ટર્ડ ખરીદ વેચાણ દસ્તાવેજ (ઇન્ડેક્સ-૨ ની નકલ સાથે).</li>
                             <li>બિનખેતી (NA) હુકમ અને મંજૂર થયેલ લેઆઉટ પ્લાન/નકશો.</li>
-                            <li>નગરપાલિકા દ્વારા આપવામાં આવેલ બાંધકામ મંજૂરી (રાજાચીઠ્ઠી).</li>
-                            <li>બીયુ પરમિશન (Building Use Permission) ની નકલ.</li>
-                            <li>તાજેતરનું સીટી સર્વે પ્રોપર્ટી કાર્ડ અથવા ૭/૧૨, ૮-અ ના ઉતારા.</li>
-                            <li>અરજદારનું આધાર કાર્ડ/ચૂંટણી કાર્ડ અને પાસપોર્ટ સાઇઝ ફોટો.</li>
+                            <li>નગરપાલિકા દ્વારા આપવામાં આવેલ બાંધકામ મંજૂરી (રાજાચીઠ્ઠી) અને બીયુ પરમિશન.</li>
+                            <li>સીટી સર્વે પ્રોપર્ટી કાર્ડ અથવા ૭/૧૨, ૮-અ ના તાજેતરના ઉતારા.</li>
                         </ul>
                     </div>
                 </li>
-                <li class="step-item" data-step="૩">
-                    <div class="step-title">ફાઇલ સબમિશન અને વેરિફિકેશન</div>
-                    <div>તૈયાર કરેલી ફાઇલ ઓનલાઈન પોર્ટલ પર અપલોડ કરો અથવા નગરપાલિકાની વેરા શાખામાં રૂબરૂ સબમિટ કરો. ત્યારબાદ નગરપાલિકાના સર્વેયર દ્વારા મિલકતની સ્થળ તપાસ (Site Inspection) કરવામાં આવશે.</div>
-                </li>
-                <li class="step-item" data-step="૪">
-                    <div class="step-title">આકારણી મંજૂરી અને નવો પ્રોપર્ટી ID</div>
-                    <div>સ્થળ તપાસણીના રિપોર્ટ આધારે નિયત સરકારી ધોરણો મુજબ વેરો (Tax) નક્કી થશે અને મિલકતને નવો <strong>Property ID / Assessment Number</strong> ફાળવવામાં આવશે.</div>
+                <li class="step-item" data-step="૨">
+                    <div class="step-title">સ્થળ તપાસણી અને ફાઈનલ મંજૂરી</div>
+                    <div>ઓનલાઈન ફોર્મ સબમિટ થયા પછી નગરપાલિકાના સર્વેયર દ્વારા સાઈટ ઈન્સ્પેક્શન કરવામાં આવશે અને નવો ટેક્સ તેમજ મિલકત નંબર જનરેટ કરાશે.</div>
                 </li>
             </ul>
         </div>
 
         <!-- વિભાગ ૩: નામફેર પ્રોસેસ -->
         <div class="section-card namefer">
-            <h2>૩. નામફેર / હક્ક દાખલ (Property Transfer) - સ્ટેપ-બાય-સ્ટેપ પ્રોસેસ</h2>
-            <p>મિલકત વેચાણ, બક્ષિસ, વારસાઈ કે વસીયતનામા દ્વારા અન્ય વ્યક્તિના નામે ટ્રાન્સફર કરવાની પ્રક્રિયા:</p>
-
-            <ul class="steps">
-                <li class="step-item" data-step="૧">
-                    <div class="step-title">નામફેર અરજી ફોર્મ ભરવું</div>
-                    <div>'નામફેર માટેનું નિયત ફોર્મ-૨' ડાઉનલોડ કરી, જૂના માલિક અને નવા ખરીદનાર બંનેની સહીઓ સાથે વિગતો ભરો.</div>
-                    <a href="#" class="btn-download" style="background-color: var(--secondary-color);">📄 ફોર્મ-૨ ડાઉનલોડ કરો</a>
-                </li>
-                <li class="step-item" data-step="૨">
-                    <div class="step-title">જરૂરી દસ્તાવેજો એકત્રિત કરવા</div>
-                    <div class="checklist" style="background-color: #fff5f5; border-color: #dc3545;">
-                        <div class="checklist-title" style="color: #dc3545;">📂 જરૂરી ચેકલિસ્ટ (નામફેર):</div>
-                        <ul>
-                            <li><strong>વેચાણના કિસ્સામાં:</strong> રજિસ્ટર્ડ વેચાણ દસ્તાવેજ અને ઇન્ડેક્સ-૨ ની નકલ.</li>
-                            <li><strong>વારસાઈના કિસ્સામાં:</strong> મૂળ માલિકનું મરણ પ્રમાણપત્ર, પેઢીનામું અને અન્ય વારસદારોનું હક્ક ઉઠાવ અંગેનું સોગંદનામું.</li>
+            <h2>૩. નામફેર / હક્ક દાખલ (Property Transfer) - પ્રોસેસ અને ઓનલાઈન ફોર્મ</h2>
+            
+            <div class="action-panel">
+                <div class="info-box">
+                    <h3>મિલકત નામફેર ઓનલાઈન સબમિશન</h3>
+                    <p>મિલકત વેચાણ, બક્ષિસ કે વારસાઈના કિસ્સામાં નામ બદલવા માટે નીચેના બટન પર ક્લિક કરો અથવા મોબાઈલથી QR કોડ સ્કેન કરો.</p>
+                    <a href="https://example.com" target="_blank" class="btn-action">💻 ઓનલાઈન નામફેર ફોર્મ ભરો (ફોર્મ-૨)</a>
+                </div>
+                <div class="qr-box">
+                    <strong>મોબાઈલથી સ્કેન કરો</strong>
