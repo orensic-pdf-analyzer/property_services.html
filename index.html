@@ -51,7 +51,6 @@
             margin-top: 0;
         }
 
-        /* લોગિન ફોર્મ */
         .login-form input {
             width: 100%;
             padding: 10px;
@@ -61,7 +60,6 @@
             box-sizing: border-box;
         }
 
-        /* બટન્સ */
         .btn {
             background-color: var(--primary-color);
             color: white;
@@ -77,7 +75,6 @@
         .btn-orange { background-color: var(--orange-color); }
         .btn-danger { background-color: #dc3545; }
 
-        /* અપલોડ સેક્શન */
         .upload-group {
             margin-bottom: 20px;
             padding: 15px;
@@ -93,7 +90,6 @@
             color: #475569;
         }
 
-        /* અરજદાર ડાઉનલોડ લિસ્ટ */
         .download-list {
             list-style: none;
             padding: 0;
@@ -159,7 +155,7 @@
             </div>
         </div>
 
-        <!-- વિભાગ ૨: એડમિન ડેશબોર્ડ (લોગિન થયા પછી જ દેખાશે) -->
+        <!-- વિભાગ ૨: એડમિન ડેશબોર્ડ -->
         <div class="card" id="adminDashboard" style="display: none;">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 8px; margin-bottom: 15px;">
                 <h2 style="border: none; margin: 0;">🛠️ એડમિન કંટ્રોલ પેનલ (સર્વર અપલોડ)</h2>
@@ -181,7 +177,7 @@
             </div>
         </div>
 
-        <!-- વિભાગ ૩: અરજદાર માટે ડાઉનલોડ સેક્શન (હંમેશા પબ્લિક રહેશે) -->
+        <!-- વિભાગ ૩: અરજદાર માટે ડાઉનલોડ સેક્શન -->
         <div class="card">
             <h2>📥 સિટિઝન ડાઉનલોડ કેન્દ્ર (અરજદારો માટે તમામ ફાઇલો)</h2>
             <p style="color: #666; font-size: 14px;">અરજદારશ્રી સીધી રીતે નીચે આપેલા લિસ્ટમાંથી ફોર્મ અને માર્ગદર્શિકા ડાઉનલોડ કરી શકશે.</p>
@@ -207,11 +203,9 @@
     </div>
 
     <script>
-        // ટેસ્ટિંગ માટે ડિફોલ્ટ એડમિન આઈડી-પાસવર્ડ સેટ કરેલ છે
         const ADMIN_USER = "admin";
         const ADMIN_PASS = "nagarpalika123";
 
-        // લોગિન ચેક કરવાનું ફંક્શન
         function checkLogin() {
             const user = document.getElementById('username').value;
             const pass = document.getElementById('password').value;
@@ -226,7 +220,6 @@
             }
         }
 
-        // લોગઆઉટ ફંક્શન
         function logout() {
             document.getElementById('loginCard').style.display = 'block';
             document.getElementById('adminDashboard').style.display = 'none';
@@ -234,23 +227,19 @@
             document.getElementById('password').value = '';
         }
 
-        // સર્વર પર ફાઇલ અપલોડ કરી અરજદાર સેક્શનમાં લિંક બદલવાનું ફંક્શન
         function uploadFile(formType) {
             let fileInput;
             let targetLink;
             let targetTime;
-            let targetLabel;
 
             if (formType === 'form1') {
                 fileInput = document.getElementById('fileForm1');
                 targetLink = document.getElementById('linkForm1');
                 targetTime = document.getElementById('timeForm1');
-                targetLabel = document.getElementById('labelForm1');
             } else {
                 fileInput = document.getElementById('fileForm2');
                 targetLink = document.getElementById('linkForm2');
                 targetTime = document.getElementById('timeForm2');
-                targetLabel = document.getElementById('labelForm2');
             }
 
             if (fileInput.files.length === 0) {
@@ -259,14 +248,18 @@
             }
 
             const file = fileInput.files[0];
-            
-            // બ્રાઉઝર લેવલ પર ફાઇલની લોકલ લિંક (Blob) જનરેટ કરવી જેથી અરજદાર ડાઉનલોડ કરી શકે
             const fileURL = URL.createObjectURL(file);
             
-            // અરજદારના ડાઉનલોડ સેક્શનમાં ડેટા અપડેટ કરવો
             targetLink.href = fileURL;
             targetLink.setAttribute('download', file.name);
             
             const currentDateTime = new Date().toLocaleString('gu-IN');
             targetTime.innerText = "અપલોડ તારીખ: " + currentDateTime + " | ફાઇલનું નામ: " + file.name;
             
+            const successAlert = document.getElementById('uploadSuccess');
+            successAlert.style.display = 'block';
+            setTimeout(() => { successAlert.style.display = 'none'; }, 4000);
+        }
+    </script>
+</body>
+</html>
