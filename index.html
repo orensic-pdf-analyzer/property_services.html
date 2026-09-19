@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>નગરપાલિકા મિલકત સેવાઓ | નવી આકારણી અને નામફેર માર્ગદર્શિકા</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f58220;
+            --success-color: #28a745;
+            --dark-color: #333;
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* સરકારી હેડર શૈલી */
+        header {
+            background: linear-gradient(135deg, #f58220 0%, #ffffff 50%, #28a745 100%);
+            border-bottom: 3px solid var(--primary-color);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 5px 0;
+            color: #002d62;
+            font-size: 28px;
+        }
+
+        header p {
+            margin: 5px 0;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* મુખ્ય વિભાગો */
+        .section-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .section-card.namefer {
+            border-left-color: var(--secondary-color);
+        }
+
+        .section-card.record {
+            border-left-color: var(--success-color);
+        }
+
+        h2 {
+            color: #002d62;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .alert-info {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        /* સ્ટેપ બાય સ્ટેપ ટાઈમલાઈન */
+        .steps {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 20px;
+        }
+
+        .step-item::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        .namefer .step-item::before {
+            background-color: var(--secondary-color);
+        }
+
+        .step-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #111;
+            margin-bottom: 5px;
+        }
+
+        /* ચેકલિસ્ટ બૉક્સ */
+        .checklist {
+            background-color: #fff9f3;
+            border: 1px dashed #f58220;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .checklist-title {
+            font-weight: bold;
+            color: #c45a00;
+            margin-bottom: 8px;
+        }
+
+        .checklist ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .checklist li {
+            margin-bottom: 6px;
+        }
+
+        /* સરકારી રેકોર્ડ ટેબલ */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #fff;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #002d62;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background-color: #6c757d;
+        }
+
+        .badge-time {
+            background-color: #e67e22;
+        }
+
+        /* બટન શૈલી */
+        .btn-download {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: #004085;
+        }
+
+        /* ફૂટર */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #002d62;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>નગરપાલિકા ડિજિટલ સેવા પોર્ટલ</h1>
+        <p>મિલકત રેકોર્ડ વિભાગ: નવી આકારણી અને નામફેર ઓનલાઈન માર્ગદર્શિકા</p>
+    </header>
+
+    <div class="container">
+
+        <!-- વિભાગ ૧: સામાન્ય સૂચનાઓ -->
+        <div class="section-card">
+            <h2>૧. સામાન્ય માર્ગદર્શિકા અને સૂચનાઓ</h2>
+            <div class="alert-info">
+                <strong>અગત્યની નોંધ:</strong> નગરપાલિકા વિસ્તારમાં આવતી તમામ મિલકતોની કાયદેસર નોંધણી (આકારણી) અને માલિકી હક્ક બદલાય ત્યારે નામફેર (દસ્તાવેજ ટ્રાન્સફર) કરાવવું સરકારી નિયમોનુસાર ફરજિયાત છે.
+            </div>
+            <ul>
+                <li>તમામ દસ્તાવેજો ઓરિજિનલ નકલમાંથી સ્પષ્ટ સ્કેન કરીને અપલોડ કરવાના રહેશે.</li>
+                <li>અધૂરી વિગતો અથવા ખોટા કાગળો ધરાવતી અરજીઓ સીધી જ નામંજૂર થઈ શકે છે.</li>
+                <li>ઓનલાઈન અરજી સબમિટ કર્યા બાદ મળેલ <strong>એપ્લિકેશન નંબર</strong> સાચવી રાખવો.</li>
+            </ul>
+        </div>
+
+        <!-- વિભાગ ૨: નવી આકારણી પ્રોસેસ -->
+        <div class="section-card">
+            <h2>૨. નવી આકારણી (New Property Assessment) - સ્ટેપ-બાય-સ્ટેપ પ્રોસેસ</h2>
+            <p>નવી બનેલી મિલકત (મકાન/દુકાન)ને પ્રથમ વખત નગરપાલિકાના વેરા ચોપડે નોંધવાની પ્રક્રિયા:</p>
+            
+            <ul class="steps">
+                <li class="step-item" data-step="૧">
+                    <div class="step-title">અરજી ફોર્મ ભરવું</div>
+                    <div>વેબસાઇટ પરથી 'નવી આકારણી માટેનું નિયત ફોર્મ-૧' ડાઉનલોડ કરી, મિલકત ધારકની તમામ વ્યક્તિગત અને બાંધકામની વિગતો સચોટ ભરો.</div>
+                    <a href="#" class="btn-download">📄 ફોર્મ-૧ ડાઉનલોડ કરો</a>
+                </li>
+                <li class="step-item" data-step="૨">
+                    <div class="step-title">દસ્તાવેજોની ફાઇલ તૈયાર કરવી</div>
+                    <div class="checklist">
+                        <div class="checklist-title">📂 જરૂરી ચેકલિસ્ટ (નવી આકારણી):</div>
+                        <ul>
+                            <li>રજિસ્ટર્ડ ખરીદ વેચાણ દસ્તાવેજ (ઇન્ડેક્સ-૨ ની નકલ સાથે).</li>
+                            <li>બિનખેતી (NA) હુકમ અને મંજૂર થયેલ લેઆઉટ પ્લાન/નકશો.</li>
+                            <li>નગરપાલિકા દ્વારા આપવામાં આવેલ બાંધકામ મંજૂરી (રાજાચીઠ્ઠી).</li>
+                            <li>બીયુ પરમિશન (Building Use Permission) ની નકલ.</li>
+                            <li>તાજેતરનું સીટી સર્વે પ્રોપર્ટી કાર્ડ અથવા ૭/૧૨, ૮-અ ના ઉતારા.</li>
+                            <li>અરજદારનું આધાર કાર્ડ/ચૂંટણી કાર્ડ અને પાસપોર્ટ સાઇઝ ફોટો.</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="step-item" data-step="૩">
+                    <div class="step-title">ફાઇલ સબમિશન અને વેરિફિકેશન</div>
+                    <div>તૈયાર કરેલી ફાઇલ ઓનલાઈન પોર્ટલ પર અપલોડ કરો અથવા નગરપાલિકાની વેરા શાખામાં રૂબરૂ સબમિટ કરો. ત્યારબાદ નગરપાલિકાના સર્વેયર દ્વારા મિલકતની સ્થળ તપાસ (Site Inspection) કરવામાં આવશે.</div>
+                </li>
+                <li class="step-item" data-step="૪">
+                    <div class="step-title">આકારણી મંજૂરી અને નવો પ્રોપર્ટી ID</div>
+                    <div>સ્થળ તપાસણીના રિપોર્ટ આધારે નિયત સરકારી ધોરણો મુજબ વેરો (Tax) નક્કી થશે અને મિલકતને નવો <strong>Property ID / Assessment Number</strong> ફાળવવામાં આવશે.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- વિભાગ ૩: નામફેર પ્રોસેસ -->
+        <div class="section-card namefer">
+            <h2>૩. નામફેર / હક્ક દાખલ (Property Transfer) - સ્ટેપ-બાય-સ્ટેપ પ્રોસેસ</h2>
+            <p>મિલકત વેચાણ, બક્ષિસ, વારસાઈ કે વસીયતનામા દ્વારા અન્ય વ્યક્તિના નામે ટ્રાન્સફર કરવાની પ્રક્રિયા:</p>
+
+            <ul class="steps">
+                <li class="step-item" data-step="૧">
+                    <div class="step-title">નામફેર અરજી ફોર્મ ભરવું</div>
+                    <div>'નામફેર માટેનું નિયત ફોર્મ-૨' ડાઉનલોડ કરી, જૂના માલિક અને નવા ખરીદનાર બંનેની સહીઓ સાથે વિગતો ભરો.</div>
+                    <a href="#" class="btn-download" style="background-color: var(--secondary-color);">📄 ફોર્મ-૨ ડાઉનલોડ કરો</a>
+                </li>
+                <li class="step-item" data-step="૨">
+                    <div class="step-title">જરૂરી દસ્તાવેજો એકત્રિત કરવા</div>
+                    <div class="checklist" style="background-color: #fff5f5; border-color: #dc3545;">
+                        <div class="checklist-title" style="color: #dc3545;">📂 જરૂરી ચેકલિસ્ટ (નામફેર):</div>
+                        <ul>
+                            <li><strong>વેચાણના કિસ્સામાં:</strong> રજિસ્ટર્ડ વેચાણ દસ્તાવેજ અને ઇન્ડેક્સ-૨ ની નકલ.</li>
+                            <li><strong>વારસાઈના કિસ્સામાં:</strong> મૂળ માલિકનું મરણ પ્રમાણપત્ર, પેઢીનામું અને અન્ય વારસદારોનું હક્ક ઉઠાવ અંગેનું સોગંદનામું.</li>
